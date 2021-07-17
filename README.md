@@ -150,7 +150,7 @@ I implmented pagination on the webpage that displays items in a list from the da
 ![image](https://user-images.githubusercontent.com/70549003/126020463-f17601a3-64f2-4b58-97f9-248180974093.png)
 
 I was able to implement Bootstrap in a Django form class instead of implementing it in a Django template file where HTML is written.
-```django
+```python
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe

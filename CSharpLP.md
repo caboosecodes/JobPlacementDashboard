@@ -9,7 +9,8 @@ Create, Edit and Index pages for the model.
 
 ## Styling the Navbar
 Styled the existing Navbar according to story specifications with Bootstrap, CSS, and Font Awesome Icons.
-![image](https://user-images.githubusercontent.com/70549003/131169030-69facc76-4815-47a1-9968-f6cc7058af12.png)
+
+![navbar](https://user-images.githubusercontent.com/70549003/131183164-433ecfa4-ecde-4470-83be-3f624b1c7a46.gif)
 
 ## Creating the Model
 I wrote a class, Rental History, to be used as a model in a code first approach using Entity Framework.
@@ -27,49 +28,13 @@ namespace TheatreCMS3.Areas.Rent.Models
 }
 ```
 
-## Create and Edit Pages
-Style the Create and Edit pages for the Rental History model with Bootstrap while adhering to the styleguide.
-### Create Page
-![image](https://user-images.githubusercontent.com/70549003/131168670-450b4632-fdf5-455d-afb2-82c01e0752c5.png)
-
-I wrote a Javascript function to change the label "Notes" to "Damages Incurred" when the checkboxed is checked.
-```javascript
-var label = document.getElementById("damages");
-var checkbox = document.getElementById("isDamaged");
-
-// changes label from Notes to Damages incurred on create page
-checkbox.addEventListener("change", function () {
-    if (this.checked == true) {
-        label.innerHTML = "Damages Incurred";
-    } else {
-        label.innerHTML = "Notes";
-    }
-});
-```
-
-*** INSERT GIF HERE ***
-
-### Edit Page
-The edit page has the same styling as the Create page but a different Javaacript function was used to make sure the correct label displayed depending on the status of the checkbox.
-```javascript
-var label = document.getElementById("damages");
-var checkbox = document.getElementById("isDamaged");
-
-// loads the proper label depending if the checkbox is already checked
-window.addEventListener("load", function () {
-    if (checkbox.checked == true) {
-        label.innerHTML = "Damages Incurred";
-    } else {
-        label.innerHTML = "Notes";
-    }
-});
-```
-
 ## Index Page
-Display all entries in the database in a custom table styled by using CSHTML, CSS, Bootstrap and Font Awesome Icons.
+The index page displays all the entries in the database in a table built and styled using Razor syntax, Bootstrap, CSS and Font Awesome icons.
+
 ![image](https://user-images.githubusercontent.com/70549003/131171033-69ccda17-7ac5-4ed7-b704-3a144fde589b.png)
 
 I wrote logic using Razor syntax in the Index.cshtml file to display red cricle X for a damaged item and a green circle checkmark for an undamaged item.
+
 ```cshtml
 @if (item.RentalDamaged == true)
           {
@@ -84,10 +49,26 @@ I wrote logic using Razor syntax in the Index.cshtml file to display red cricle 
             </td>
           }
 ```
-When hovering over the table rows a hamburger button appears, with working links.
-*** INSERT GIF HERE ***
 
-Using the Razor @Url.Action() method I linked to the edit, details, and delete pages.
+Also, I wrote logic to grey out text if the rentals where marked with a checkmark.
+
+```cshtml
+@if (item.RentalDamaged == false)
+              {
+                <span class="rental_history-index--w text-secondary">
+                  @Html.DisplayFor(modelItem => item.DamagesIncurred)
+                </span>
+              }
+              else
+              {
+                <span class="rental_history-index--w">
+                  @Html.DisplayFor(modelItem => item.DamagesIncurred)
+                </span>
+              }
+```
+
+Using the Razor @Url.Action() method I linked to the edit, details, and delete pages when the hamburger button is clicked.
+
 ```cshtml
 <button class="rental_history-index--btn btn dropdown float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-ellipsis-v"></i>
@@ -105,4 +86,50 @@ Using the Razor @Url.Action() method I linked to the edit, details, and delete p
               </a>
             </div>
 ```
+![indexlink](https://user-images.githubusercontent.com/70549003/131183212-dd5891eb-08c5-4f20-a246-7f069c745ec8.gif)
 
+## Create and Edit Pages
+The Create and Edit pages for the Rental History model  were modeled with Bootstrap and CSS while adhering to the styleguide.
+### Create Page
+![image](https://user-images.githubusercontent.com/70549003/131168670-450b4632-fdf5-455d-afb2-82c01e0752c5.png)
+
+I wrote a Javascript function to change the label "Notes" to "Damages Incurred" when the checkboxed is checked.
+
+```javascript
+var label = document.getElementById("damages");
+var checkbox = document.getElementById("isDamaged");
+
+// changes label from Notes to Damages incurred on create page
+checkbox.addEventListener("change", function () {
+    if (this.checked == true) {
+        label.innerHTML = "Damages Incurred";
+    } else {
+        label.innerHTML = "Notes";
+    }
+});
+```
+
+![checkbox](https://user-images.githubusercontent.com/70549003/131181511-80d2d9a5-5daa-42d5-9e77-b94d7d0c3f03.gif)
+
+
+### Edit Page
+The edit page has the same styling as the Create page but a different Javaacript function was used to make sure the correct label displayed depending on the status of the checkbox.
+
+```javascript
+var label = document.getElementById("damages");
+var checkbox = document.getElementById("isDamaged");
+
+// loads the proper label depending if the checkbox is already checked
+window.addEventListener("load", function () {
+    if (checkbox.checked == true) {
+        label.innerHTML = "Damages Incurred";
+    } else {
+        label.innerHTML = "Notes";
+    }
+});
+```
+
+## Other Skills learned
+* The majority of the work accomplished had to do with the front end of the website, which increased my familiarity with Bootstrap, CSS and HTML.
+* Learned more about Razor syntax and the intricacies of it's html helpers.
+* Gained a greater understanding of Visual Studio and version control with Azure Dev Ops.

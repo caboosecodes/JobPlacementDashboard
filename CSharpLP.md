@@ -4,7 +4,7 @@ While working with a group of my peers, I participated in a 2 week sprint workin
 The project was built using ASP.NET MVC and Entity Framework and is meant to be a CMS, content management service, for users who are not technically savvy.
 
 While much of the site was already built, making sure my additions/changes conformed to the styleguide and didn't interfere with other people's work was
-a great learning oppotunity. I worked on styling the Navbar and using a code first approach I created a model, Rental Histories, and worked on the 
+a great learning oppotunity. I worked on styling the Navbar and using a code first approach I created a model, Rental History, and worked on the 
 Create, Edit and Index pages for the model.
 
 ## Styling the Navbar
@@ -86,6 +86,7 @@ Using the Razor @Url.Action() method I linked to the edit, details, and delete p
               </a>
             </div>
 ```
+
 ![indexlink](https://user-images.githubusercontent.com/70549003/131183212-dd5891eb-08c5-4f20-a246-7f069c745ec8.gif)
 
 ## Create and Edit Pages
